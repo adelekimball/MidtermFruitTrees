@@ -87,7 +87,12 @@ const layer = new FeatureLayer({
 })
 map.add(layer);
 
+const layer2 = new FeatureLayer({
+                url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/Originaldata/FeatureServer" // Replace this with the URL of your second feature layer
+            });
 
+            // Add second feature layer to the map
+            map.add(layer2);
     });
 
         </script>
