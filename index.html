@@ -44,7 +44,7 @@
 
         <script>
         require([ "esri/config","esri/Map", "esri/views/MapView", "esri/widgets/Locate", "esri/widgets/Search", "esri/layers/FeatureLayer"
- ], (esriConfig, Map, MapView, Locate, Search, FeatureLayer, Tilelayer) => {
+ ], (esriConfig, Map, MapView, Locate, Search, FeatureLayer) => {
             
             esriConfig.apiKey = "AAPK56e7de324d3341c386c7dbdcd2cf502e0zQZ_VUXJMF3xcUTtdvcYfLx57DnFCUGtbv7DDxH9DnnruoSzJF7xeEJ4Pk3GpBC";
 
@@ -87,7 +87,7 @@ const layer = new FeatureLayer({
 })
 map.add(layer);
 
-const oldestdata = new TileLayer({
+const oldestdata = new FeatureLayer({
   url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/Originaldata/FeatureServer",
   renderer: {
     type: "simple",  // Use a simple renderer
