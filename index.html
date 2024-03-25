@@ -89,19 +89,7 @@ map.add(layer);
 
 const oldestdata = new FeatureLayer({
   url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/Originaldata/FeatureServer",
-  renderer: {
-    type: "simple",  // Use a simple renderer
-    symbol: {
-      type: "simple-marker",  // Use a simple marker symbol
-      color: [255, 0, 0],     // Red color
-      size: 10,               // Size of the marker
-      outline: {
-        color: [255, 255, 255], // White outline color
-        width: 1               // Width of the outline
-      }
-    }
-  }
-  //definitionExpression: "updated_at = '2019'"
+  definitionExpression: "updated_at = '2019'"
 
 });
 
