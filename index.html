@@ -44,7 +44,7 @@
 
         <script>
         require([ "esri/config","esri/Map", "esri/views/MapView", "esri/widgets/Locate", "esri/widgets/Search", "esri/layers/FeatureLayer"
- ], (esriConfig, Map, MapView, Locate, Search, FeatureLayer) => {
+ ], (esriConfig, Map, MapView, Locate, Search, FeatureLayer, Tilelayer) => {
             
             esriConfig.apiKey = "AAPK56e7de324d3341c386c7dbdcd2cf502e0zQZ_VUXJMF3xcUTtdvcYfLx57DnFCUGtbv7DDxH9DnnruoSzJF7xeEJ4Pk3GpBC";
 
@@ -87,13 +87,25 @@ const layer = new FeatureLayer({
 })
 map.add(layer);
 
-const layer2 = new FeatureLayer({
-                url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/Originaldata/FeatureServer" // Replace this with the URL of your second feature layer
-            });
+const oldestdata = new TileLayer({
+  url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/Originaldata/FeatureServer",
+  renderer: {
+    type: "simple",  // Use a simple renderer
+    symbol: {
+      type: "simple-marker",  // Use a simple marker symbol
+      color: [255, 0, 0],     // Red color
+      size: 10,               // Size of the marker
+      outline: {
+        color: [255, 255, 255], // White outline color
+        width: 1               // Width of the outline
+      }
+    }
+  },
+  definitionExpression: "updated_at = '2019'"
 
-            // Add second feature layer to the map
-            map.add(layer2);
-    });
+});
+
+map.layers.add(oldestdata);
 
         </script>
     
