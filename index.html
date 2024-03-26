@@ -81,11 +81,11 @@
         });
 
 // Create featurelayer from feature service 
-const surveylayer = new FeatureLayer({ 
+//const surveylayer = new FeatureLayer({ 
   // URL to the service 
-   url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/survey123_b1c458dfe7524790a255bbccc380bc43_results/FeatureServer" //Your item URL Goes Here
-})
-map.add(surveylayer);
+  // url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/survey123_b1c458dfe7524790a255bbccc380bc43_results/FeatureServer" //Your item URL Goes Here
+//})
+//map.add(surveylayer);
 
 const oldestdata = new FeatureLayer({ 
   // URL to the service 
@@ -102,7 +102,7 @@ const oldestdata = new FeatureLayer({
       }
     }
   },
-   definitionExpression: "updated_at = 'old'"
+   definitionExpression: "state = 'Florida'"
 })
 map.add(oldestdata);
 
