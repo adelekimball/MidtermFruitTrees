@@ -55,8 +55,8 @@
             const view = new MapView({
             container: "viewDiv", // Reference to the DOM node that will contain the view
             map: map,
-            center: [-81.6661761, 28.3327285],
-            zoom: 6 // References the map object
+            center: [-82.3268317, 29.6519881],
+            zoom: 13 // References the map object
             });
 
             const locateBtn = new Locate({
@@ -89,10 +89,16 @@ map.add(layer);
 
 const oldestdata = new FeatureLayer({ 
   // URL to the service 
-   url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/Originaldata/FeatureServer"
-   //definitionExpression: "updated_at = '2019'"
+   url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/Originaldata/FeatureServer",
+   definitionExpression: "updated_at = '2019'"
 })
 map.add(oldestdata);
+
+const middledata = new FeatureLayer({
+  url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/Originaldata/FeatureServer",
+   definitionExpression: "updated_at = '2022'"
+})
+map.add(middledata);
 
     });
 
