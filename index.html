@@ -110,6 +110,12 @@ const oldestdata = new FeatureLayer({
 })
 map.add(oldestdata);
 
+
+const popupmiddledata = {
+  "title": "Tree Species",
+  "content": "<b>Species:</b> {types}<br>"
+}
+
 const middledata = new FeatureLayer({
   url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/datausethis/FeatureServer",renderer: {
     type: "simple",  // Use a simple renderer
@@ -123,7 +129,9 @@ const middledata = new FeatureLayer({
       }
     }
   },
-   definitionExpression: "updated_at = 'middle'"
+   definitionExpression: "updated_at = 'middle'",
+   outFields: ["types"],
+  popupTemplate: popupmiddledata
 })
 map.add(middledata);
 
