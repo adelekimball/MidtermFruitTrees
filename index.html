@@ -94,7 +94,7 @@ const oldestdata = new FeatureLayer({
     type: "simple",  // Use a simple renderer
     symbol: {
       type: "simple-marker",  // Use a simple marker symbol
-      color: [0, 255, 0],     // Green color
+      color: [255, 0, 0],     // Green color
       size: 10,               // Size of the marker
       outline: {
         color: [255, 255, 255], // White outline color
@@ -111,6 +111,27 @@ const middledata = new FeatureLayer({
    definitionExpression: "updated_at = 'middle'"
 })
 map.add(middledata);
+
+const recentdata = new FeatureLayer({ 
+  // URL to the service 
+   url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/datausethis/FeatureServer",
+   renderer: {
+    type: "simple",  // Use a simple renderer
+    symbol: {
+      type: "simple-marker",  // Use a simple marker symbol
+      color: [0, 255, 0],     // Green color
+      size: 10,               // Size of the marker
+      outline: {
+        color: [255, 255, 255], // White outline color
+        width: 1               // Width of the outline
+      }
+    }
+  },
+   definitionExpression: "updated_at = 'recent'"
+})
+map.add(recentdata);
+
+
 
     });
 
