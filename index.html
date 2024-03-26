@@ -89,7 +89,7 @@ map.add(surveylayer);
 
 const oldestdata = new FeatureLayer({ 
   // URL to the service 
-   url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/Originaldata/FeatureServer",
+   url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/datausethis/FeatureServer",
    renderer: {
     type: "simple",  // Use a simple renderer
     symbol: {
@@ -102,13 +102,13 @@ const oldestdata = new FeatureLayer({
       }
     }
   },
-   definitionExpression: "updated_at = '2019'"
+   definitionExpression: "updated_at = 'old'"
 })
 map.add(oldestdata);
 
 const middledata = new FeatureLayer({
-  url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/Originaldata/FeatureServer",
-   definitionExpression: "updated_at = '2022'"
+  url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/datausethis/FeatureServer",
+   definitionExpression: "updated_at = 'middle'"
 })
 map.add(middledata);
 
