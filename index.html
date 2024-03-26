@@ -107,7 +107,18 @@ const oldestdata = new FeatureLayer({
 map.add(oldestdata);
 
 const middledata = new FeatureLayer({
-  url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/datausethis/FeatureServer",
+  url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/datausethis/FeatureServer",renderer: {
+    type: "simple",  // Use a simple renderer
+    symbol: {
+      type: "simple-marker",  // Use a simple marker symbol
+      color: [255, 255, 0],    
+      size: 10,               // Size of the marker
+      outline: {
+        color: [255, 255, 255], // White outline color
+        width: 1               // Width of the outline
+      }
+    }
+  },
    definitionExpression: "updated_at = 'middle'"
 })
 map.add(middledata);
