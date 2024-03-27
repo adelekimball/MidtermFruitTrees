@@ -81,11 +81,23 @@
         });
 
 // Create featurelayer from feature service 
-//const surveylayer = new FeatureLayer({ 
+const surveylayer = new FeatureLayer({ 
   // URL to the service 
-  // url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/survey123_b1c458dfe7524790a255bbccc380bc43_results/FeatureServer" //Your item URL Goes Here
-//})
-//map.add(surveylayer);
+   url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/survey123_aff246e636e644bbbdaecae26233d601/FeatureServer",
+   renderer: {
+    type: "simple",  // Use a simple renderer
+    symbol: {
+      type: "simple-marker",  // Use a simple marker symbol
+      color: [0, 255, 0],     // Green color
+      size: 10,               // Size of the marker
+      outline: {
+        color: [255, 255, 255], // White outline color
+        width: 1               // Width of the outline
+      }
+    }
+  } 
+})
+map.add(surveylayer);
 
 const oldestdata = new FeatureLayer({ 
   // URL to the service 
@@ -111,11 +123,6 @@ const oldestdata = new FeatureLayer({
 map.add(oldestdata);
 
 
-const popupmiddledata = {
-  "title": "Tree Species",
-  "content": "<b>Species:</b> {types}<br>"
-}
-
 const middledata = new FeatureLayer({
   url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/datausethis/FeatureServer",renderer: {
     type: "simple",  // Use a simple renderer
@@ -130,8 +137,10 @@ const middledata = new FeatureLayer({
     }
   },
    definitionExpression: "updated_at = 'middle'",
-   outFields: ["types"],
-  popupTemplate: popupmiddledata
+   popupTemplate: {
+    title: "Species", // Title of the popup
+    content: "Type: {types}" // Content of the popup
+  }
 })
 map.add(middledata);
 
@@ -150,7 +159,11 @@ const recentdata = new FeatureLayer({
       }
     }
   },
-   definitionExpression: "updated_at = 'recent'"
+   definitionExpression: "updated_at = 'recent'",
+   popupTemplate: {
+    title: "Species", // Title of the popup
+    content: "Type: {types}" // Content of the popup
+  }
 })
 map.add(recentdata);
 
@@ -164,7 +177,7 @@ map.add(recentdata);
 </head>
     <body>
 
-        <a href="https://survey123.arcgis.com/share/55a1dcb95cfe435a8b16cebfd83afef4"target="_blank" class="addRecordBtn">Add Record</a>
+        <a href="https://arcg.is/0qi5Kj"target="_blank" class="addRecordBtn">Add Tree</a>
 
         <div id="viewDiv"></div>
     </body>
