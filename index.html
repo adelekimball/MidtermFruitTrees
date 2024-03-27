@@ -49,7 +49,7 @@ require([ "esri/config","esri/Map", "esri/views/MapView", "esri/widgets/Locate",
      esriConfig.apiKey = "AAPK56e7de324d3341c386c7dbdcd2cf502e0zQZ_VUXJMF3xcUTtdvcYfLx57DnFCUGtbv7DDxH9DnnruoSzJF7xeEJ4Pk3GpBC";
 
        const map = new Map({
-       basemap: "satellite"
+       basemap: "hybrid-reference-layer"
        });
 
         const view = new MapView({
@@ -179,14 +179,14 @@ const legend = new Legend({
     view: view,
     layerInfos: [
         {
-            title: "Major South Florida Airports",
+            title: "Recent Report (post 2022)",
             layer: recentdata // Reference to your FeatureLayer
         },
         {
-            title: "Heliports",
+            title: "Moderately Recent Report (2019-2022)",
             layer: middledata // Reference to your FeatureLayer
         },
-      {title: "other Airports",
+      {title: "Old Report (Prior to 2019)",
        layer: oldestdata}
     ]
 });
