@@ -43,13 +43,13 @@
 <script src="https://js.arcgis.com/4.25/"></script>
 
 <script>
-require([ "esri/config","esri/Map", "esri/views/MapView", "esri/widgets/Locate", "esri/widgets/Search", "esri/layers/FeatureLayer"
- ], (esriConfig, Map, MapView, Locate, Search, FeatureLayer) => {
+require([ "esri/config","esri/Map", "esri/views/MapView", "esri/widgets/Locate", "esri/widgets/Search", "esri/layers/FeatureLayer", "esri/widgets/Legend"
+ ], (esriConfig, Map, MapView, Locate, Search, FeatureLayer, Legend) => {
             
      esriConfig.apiKey = "AAPK56e7de324d3341c386c7dbdcd2cf502e0zQZ_VUXJMF3xcUTtdvcYfLx57DnFCUGtbv7DDxH9DnnruoSzJF7xeEJ4Pk3GpBC";
 
        const map = new Map({
-       basemap: "arcgis/imagery"
+       basemap: "satellite"
        });
 
         const view = new MapView({
@@ -172,6 +172,26 @@ const surveylayer = new FeatureLayer({
   } 
 })
 map.add(surveylayer);
+
+
+
+const legend = new Legend({
+    view: view,
+    layerInfos: [
+        {
+            title: "Major South Florida Airports",
+            layer: recentdata // Reference to your FeatureLayer
+        },
+        {
+            title: "Heliports",
+            layer: middledata // Reference to your FeatureLayer
+        },
+      {title: "other Airports",
+       layer: oldestdata}
+    ]
+});
+
+view.ui.add(legend, "bottom-right");
 
     });
 
