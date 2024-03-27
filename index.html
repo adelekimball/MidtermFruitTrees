@@ -81,23 +81,7 @@
         });
 
 // Create featurelayer from feature service 
-const surveylayer = new FeatureLayer({ 
-  // URL to the service 
-   url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/survey123_aff246e636e644bbbdaecae26233d601/FeatureServer",
-   renderer: {
-    type: "simple",  // Use a simple renderer
-    symbol: {
-      type: "simple-marker",  // Use a simple marker symbol
-      color: [0, 255, 0],     // Green color
-      size: 10,               // Size of the marker
-      outline: {
-        color: [255, 255, 255], // White outline color
-        width: 1               // Width of the outline
-      }
-    }
-  } 
-})
-map.add(surveylayer);
+
 
 const oldestdata = new FeatureLayer({ 
   // URL to the service 
@@ -167,7 +151,27 @@ const recentdata = new FeatureLayer({
 })
 map.add(recentdata);
 
-
+const surveylayer = new FeatureLayer({ 
+  // URL to the service 
+   url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/survey123_aff246e636e644bbbdaecae26233d601/FeatureServer",
+   renderer: {
+    type: "simple",  // Use a simple renderer
+    symbol: {
+      type: "simple-marker",  // Use a simple marker symbol
+      color: [0, 255, 0],     // Green color
+      size: 10,               // Size of the marker
+      outline: {
+        color: [255, 255, 255], // White outline color
+        width: 1               // Width of the outline
+      }
+    }
+  },
+  popupTemplate: {
+    title: "Species", // Title of the popup
+    content: "Type: {species_common_name}" // Content of the popup
+  } 
+})
+map.add(surveylayer);
 
     });
 
