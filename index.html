@@ -53,29 +53,29 @@ require([ "esri/config","esri/Map", "esri/views/MapView", "esri/widgets/Locate",
        });
 
         const view = new MapView({
-         container: "viewDiv", // Reference to the DOM node that will contain the view
+         container: "viewDiv", // Mapview centered on Gainesville
             map: map,
             center: [-82.3268317, 29.6519881],
-            zoom: 13 // References the map object
+            zoom: 13 
             });
 
             const locateBtn = new Locate({
-          view: view
-        });
+              view: view
+               });
 
-        // Add the locate widget to the top left corner of the view
-        view.ui.add(locateBtn, {
-          position: "top-left"
+     // Added a locate widget to the top left corner of the view
+      view.ui.add(locateBtn, {
+      position: "top-left"
         });
 
         
 
-         const searchWidget = new Search({
+  const searchWidget = new Search({
         view: view
         });
-        // Adds the search widget below other elements in
-        // the top left corner of the view
-        view.ui.add(searchWidget, {
+        // Adds the search widget in bottom left corner
+
+  view.ui.add(searchWidget, {
           position: "bottom-left",
          index: 2
         });
@@ -84,7 +84,7 @@ require([ "esri/config","esri/Map", "esri/views/MapView", "esri/widgets/Locate",
 
 
 const oldestdata = new FeatureLayer({ 
-  // URL to the service 
+  // Adding oldest data in red from hosted layer
    url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/datausethis/FeatureServer",
    renderer: {
     type: "simple",  
@@ -106,7 +106,7 @@ const oldestdata = new FeatureLayer({
 })
 map.add(oldestdata);
 
-
+//Adding moderatly older data in yellow with definition expression from feature layer
 const middledata = new FeatureLayer({
   url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/datausethis/FeatureServer",renderer: {
     type: "simple",  
@@ -129,7 +129,7 @@ const middledata = new FeatureLayer({
 map.add(middledata);
 
 const recentdata = new FeatureLayer({ 
-  // URL to the service 
+  // Adding most recent data to map using definition expression
    url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/datausethis/FeatureServer",
    renderer: {
     type: "simple",  
@@ -152,7 +152,7 @@ const recentdata = new FeatureLayer({
 map.add(recentdata);
 
 const surveylayer = new FeatureLayer({ 
-  // URL to the service 
+  // Adding survey123 data to map
    url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/survey123_aff246e636e644bbbdaecae26233d601/FeatureServer",
    renderer: {
     type: "simple", 
@@ -174,23 +174,24 @@ const surveylayer = new FeatureLayer({
 map.add(surveylayer);
 
 
-
+//Adding legend
 const legend = new Legend({
     view: view,
     layerInfos: [
         {
             title: "Recent Report (post 2022)",
-            layer: recentdata // Reference to your FeatureLayer
+            layer: recentdata 
         },
         {
             title: "Moderately Recent Report (2019-2022)",
-            layer: middledata // Reference to your FeatureLayer
+            layer: middledata 
         },
       {title: "Old Report (Prior to 2019)",
        layer: oldestdata}
     ]
 });
 
+//legend in bottom right
 view.ui.add(legend, "bottom-right");
 
     });
@@ -200,10 +201,10 @@ view.ui.add(legend, "bottom-right");
 
 </head>
     <body>
-      <h1>Welcome to the Gainesville Area Edible Plants Map</h1>
-      <p>Explore the edible plants in the Gainesville area using the interactive map below:</p>
-      
-        <a href="https://arcg.is/0qi5Kj"target="_blank" class="addRecordBtn">Add Tree</a>
+      <h1>Gainesville Area Edible Plants Map</h1>
+      <p>Add a record, or explore the edible plants in the Gainesville area using the interactive map below:</p>
+
+        <a href="https://arcg.is/0qi5Kj"target="_blank" class="addRecordBtn">Add Plant</a>
 
         <div id="viewDiv"></div>
     </body>
