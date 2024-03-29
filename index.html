@@ -16,7 +16,7 @@
   margin: 0;
   height: 100%;
   width: 100%;
-  margin-top: 8px;
+  margin-top: 16px;
    }
 /* Styling for the record button */
  .addRecordBtn {
@@ -78,7 +78,7 @@ require([ "esri/config","esri/Map", "esri/views/MapView", "esri/widgets/Locate",
         // Adds the search widget in bottom left corner
 
   view.ui.add(searchWidget, {
-          position: "bottom-left",
+          position: "top-right",
          index: 2
         });
 
@@ -191,6 +191,7 @@ const legend = new Legend({
       {title: "Old Report (Prior to 2019)",
        layer: oldestdata}
     ]
+    
 });
 
 //legend in bottom right
